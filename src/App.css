@@ -1,0 +1,5 @@
+/* App-level styles - minimal, sections have their own CSS */
+
+main {
+  overflow-x: hidden;
+}
