@@ -13,6 +13,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 import { useData } from '../../context/DataContext'
 import { getSkillLogo } from '../Skills/SkillLogos'
+import { getAssetUrl } from '../../utils/assetUtils'
 import './Projects.css'
 
 const techLogos = [
@@ -69,7 +70,7 @@ function Projects() {
               <div key={p.id || idx} className="project-card">
                 {p.image && (
                   <div className={`project-card-img${p.darkBg ? ' project-card-img--dark' : ''}`}>
-                    <img src={p.image} alt={p.title} />
+                    <img src={getAssetUrl(p.image)} alt={p.title} />
                   </div>
                 )}
                 <div className="project-card-header">

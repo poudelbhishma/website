@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars, faXmark, faSun, faMoon } from '@fortawesome/free-solid-svg-icons'
 import { useTheme } from '../../context/ThemeContext'
+import { getAssetUrl } from '../../utils/assetUtils'
 import './Navbar.css'
 
 const navLinks = [
@@ -34,7 +35,7 @@ function Navbar() {
     <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
       <div className="navbar-container">
         <a href="#hero" className="navbar-brand" onClick={(e) => { e.preventDefault(); scrollToSection('hero') }}>
-          <img src="/bhishma_logo.png" alt="Bhishma Poudel" className="navbar-logo" />
+          <img src={getAssetUrl('/bhishma_logo.png')} alt="Bhishma Poudel" className="navbar-logo" />
         </a>
         <button
           className="navbar-toggle"

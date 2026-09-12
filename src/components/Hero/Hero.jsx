@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faDownload, faLocationDot, faCode } from '@fortawesome/free-solid-svg-icons'
 import { faLinkedin, faGithub, faInstagram } from '@fortawesome/free-brands-svg-icons'
+import { getAssetUrl } from '../../utils/assetUtils'
 import './Hero.css'
 
 function Hero() {
@@ -67,7 +68,7 @@ function Hero() {
           </div>
 
           <div className="hero-cta">
-            <a href="/BhishmaPoudel_CV.pdf" download className="btn btn-primary">
+            <a href={getAssetUrl('/BhishmaPoudel_CV.pdf')} download className="btn btn-primary">
               <FontAwesomeIcon icon={faDownload} />
               Download CV
             </a>
@@ -81,7 +82,7 @@ function Hero() {
           <div className="hero-profile-wrapper">
             <div className="hero-profile-glow" />
             <img
-              src="/bhishmapoudel.jpg"
+              src={getAssetUrl('/bhishmapoudel.jpg')}
               alt="Bhishma Poudel"
               className="hero-profile-img"
             />
@@ -91,6 +92,7 @@ function Hero() {
       </div>
     </section>
   )
+}
 }
 
 export default Hero

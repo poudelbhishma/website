@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import { faLinkedin, faGithub, faInstagram } from '@fortawesome/free-brands-svg-icons'
+import { getAssetUrl } from '../../utils/assetUtils'
 import './Footer.css'
 
 const socialLinks = [
@@ -15,7 +16,7 @@ function Footer() {
       <div className="footer-content">
         <div className="footer-brand">
           <div className="footer-logo">
-            <img src="/bhishma_logo.png" alt="Bhishma Poudel" />
+            <img src={getAssetUrl('/bhishma_logo.png')} alt="Bhishma Poudel" />
           </div>
           <div className="footer-brand-info">
             

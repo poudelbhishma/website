@@ -32,14 +32,14 @@ function App() {
   const path = currentPath.toLowerCase()
   const hash = currentHash.toLowerCase()
   const search = window.location.search.toLowerCase()
+  const fullUrl = window.location.href.toLowerCase()
 
   const isAdmin =
-    path.endsWith('/access') ||
-    path.endsWith('/access/') ||
-    hash === '#/access' ||
-    hash === '#/access/' ||
-    search.includes('access=true') ||
-    search.includes('admin=true')
+    path.includes('/access') ||
+    hash.includes('access') ||
+    search.includes('access') ||
+    search.includes('admin') ||
+    fullUrl.includes('/access')
 
   if (isAdmin) {
     return <AdminPanel />
