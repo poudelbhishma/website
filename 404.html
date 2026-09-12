@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bhishma Poudel - Portfolio</title>
+    <script>
+      // Single Page App router fallback for GitHub Pages
+      (function() {
+        var path = window.location.pathname;
+        var search = window.location.search;
+        var hash = window.location.hash;
+        
+        // If route is /access, redirect to /#/access
+        if (path.indexOf('/access') !== -1) {
+          var base = path.substring(0, path.indexOf('/access'));
+          window.location.replace(base + '/#/access' + search);
+        } else {
+          // General SPA fallback redirect
+          window.location.replace(window.location.origin + '/#' + path + search + hash);
+        }
+      })();
+    </script>
+  </head>
+  <body>
+  </body>
+</html>
