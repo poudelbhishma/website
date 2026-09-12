@@ -65,7 +65,7 @@ function AdminPanel() {
     e.preventDefault()
     // Stored credentials or default admin / admin
     const storedUser = localStorage.getItem('admin_username') || 'admin'
-    const storedPass = localStorage.getItem('admin_password') || 'admin'
+    const storedPass = localStorage.getItem('admin_password') || 'Bhishma@9807'
 
     if (loginUser.trim() === storedUser && loginPass === storedPass) {
       sessionStorage.setItem('admin_authenticated', 'true')
@@ -300,7 +300,7 @@ function AdminPanel() {
               <label>Username</label>
               <input
                 type="text"
-                placeholder="Enter username (default: admin)"
+                placeholder="Enter username"
                 value={loginUser}
                 onChange={(e) => setLoginUser(e.target.value)}
                 required
@@ -311,7 +311,7 @@ function AdminPanel() {
               <label>Password</label>
               <input
                 type="password"
-                placeholder="Enter password (default: admin)"
+                placeholder="Enter password"
                 value={loginPass}
                 onChange={(e) => setLoginPass(e.target.value)}
                 required
