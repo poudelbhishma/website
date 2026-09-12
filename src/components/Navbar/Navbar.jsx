@@ -8,6 +8,7 @@ const navLinks = [
   { id: 'hero', label: 'Home' },
   { id: 'about', label: 'About' },
   { id: 'experience', label: 'Experience' },
+  { id: 'projects', label: 'Projects' },
   { id: 'skills', label: 'Skills' },
   { id: 'education', label: 'Education' },
   { id: 'contact', label: 'Contact' },
@@ -33,7 +34,7 @@ function Navbar() {
     <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
       <div className="navbar-container">
         <a href="#hero" className="navbar-brand" onClick={(e) => { e.preventDefault(); scrollToSection('hero') }}>
-          BP
+          <img src="/bhishma_logo.png" alt="Bhishma Poudel" className="navbar-logo" />
         </a>
         <button
           className="navbar-toggle"

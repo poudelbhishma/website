@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faLaptopCode, faRocket } from '@fortawesome/free-solid-svg-icons'
+import { faDownload, faLocationDot, faCode } from '@fortawesome/free-solid-svg-icons'
 import { faLinkedin, faGithub, faInstagram } from '@fortawesome/free-brands-svg-icons'
 import './Hero.css'
 
@@ -8,7 +8,7 @@ function Hero() {
   const [isVisible, setIsVisible] = useState(false)
   const [typingIndex, setTypingIndex] = useState(0)
 
-  const roles = ['Dot Net Developer', 'Software Engineer', 'Full Stack Developer']
+  const roles = ['.NET Developer', 'Software Engineer', 'Full Stack Developer']
 
   useEffect(() => {
     setIsVisible(true)
@@ -27,78 +27,66 @@ function Hero() {
 
   return (
     <section id="hero" className={`hero ${isVisible ? 'visible' : ''}`}>
-      <div className="hero-bg">
-        <div className="hero-shapes">
-          <div className="shape shape-1"></div>
-          <div className="shape shape-2"></div>
-          <div className="shape shape-3"></div>
-          <div className="shape shape-4"></div>
-          <div className="shape shape-5"></div>
-        </div>
-        <div className="hero-grid-pattern"></div>
-      </div>
+      <div className="hero-bg-grid" />
+
       <div className="hero-content">
-        <div className="hero-profile-wrapper">
-          <div className="hero-profile-glow"></div>
-          <img
-            src="/bhishmapoudel.jpg"
-            alt="Bhishma Poudel"
-            className="hero-profile-img"
-          />
-        </div>
-        <div className="hero-badge">
-          <FontAwesomeIcon icon={faRocket} className="hero-badge-icon" />
-          <span>Software Engineer</span>
-        </div>
-        <h1 className="hero-title">
-          <span className="hero-name">Bhishma Poudel</span>
-          <span className="hero-role">
+        <div className="hero-text">
+
+
+          <p className="hero-greeting">Hey! there, I'm</p>
+          <h1 className="hero-name">Bhishma Poudel</h1>
+
+          <p className="hero-role">
+            <FontAwesomeIcon icon={faCode} className="hero-role-icon" />
             <span className="hero-role-text">{roles[typingIndex]}</span>
-            <span className="hero-role-cursor">|</span>
-          </span>
-        </h1>
-        <p className="hero-location">
-          <FontAwesomeIcon icon={faLaptopCode} />
-          Lalitpur District, Nepal
-        </p>
-        <div className="hero-stats">
-          <div className="hero-stat">
-            <span className="hero-stat-num">2+</span>
-            <span className="hero-stat-label">Years Exp</span>
+          </p>
+
+          <p className="hero-description">
+            I work with .NET and JavaScript to build web applications
+            mostly at Technables IT Solutions, based out of Lalitpur, Nepal.
+          </p>
+
+          <p className="hero-location">
+            <FontAwesomeIcon icon={faLocationDot} />
+            Lalitpur, Nepal
+          </p>
+
+          <div className="hero-social">
+            <a href="https://www.linkedin.com/in/bhishma-poudel" target="_blank" rel="noopener noreferrer" className="hero-social-link linkedin" aria-label="LinkedIn">
+              <FontAwesomeIcon icon={faLinkedin} />
+              <span>LinkedIn</span>
+            </a>
+            <a href="https://www.instagram.com/bs.poudel" target="_blank" rel="noopener noreferrer" className="hero-social-link instagram" aria-label="Instagram">
+              <FontAwesomeIcon icon={faInstagram} />
+              <span>Instagram</span>
+            </a>
+            <a href="https://github.com/bhishmapoudel" target="_blank" rel="noopener noreferrer" className="hero-social-link github" aria-label="GitHub">
+              <FontAwesomeIcon icon={faGithub} />
+              <span>GitHub</span>
+            </a>
           </div>
-          <div className="hero-stat">
-            <span className="hero-stat-num">.NET</span>
-            <span className="hero-stat-label">Specialty</span>
-          </div>
-          <div className="hero-stat">
-            <span className="hero-stat-num">Nepal</span>
-            <span className="hero-stat-label">Based</span>
+
+          <div className="hero-cta">
+            <a href="/BhishmaPoudel_CV.pdf" download className="btn btn-primary">
+              <FontAwesomeIcon icon={faDownload} />
+              Download CV
+            </a>
+            <button className="btn btn-secondary" onClick={() => scrollToSection('contact')}>
+              Get In Touch
+            </button>
           </div>
         </div>
-        <div className="hero-social">
-          <a href="https://www.linkedin.com/in/bhishma-poudel" target="_blank" rel="noopener noreferrer" className="hero-social-link" aria-label="LinkedIn">
-            <FontAwesomeIcon icon={faLinkedin} />
-          </a>
-          <a href="https://www.instagram.com/bs.poudel" target="_blank" rel="noopener noreferrer" className="hero-social-link" aria-label="Instagram">
-            <FontAwesomeIcon icon={faInstagram} />
-          </a>
-          <a href="https://github.com/bhishmapoudel" target="_blank" rel="noopener noreferrer" className="hero-social-link" aria-label="GitHub">
-            <FontAwesomeIcon icon={faGithub} />
-          </a>
-        </div>
-        <div className="hero-cta">
-          <button
-            className="btn btn-primary"
-            onClick={() => scrollToSection('contact')}
-          >
-            Get In Touch
-          </button>
-          <button
-            className="btn btn-outline"
-            onClick={() => scrollToSection('about')}
-          >
-            Learn More
-          </button>
+
+        <div className="hero-image-col">
+          <div className="hero-profile-wrapper">
+            <div className="hero-profile-glow" />
+            <img
+              src="/bhishmapoudel.jpg"
+              alt="Bhishma Poudel"
+              className="hero-profile-img"
+            />
+          </div>
+
         </div>
       </div>
     </section>

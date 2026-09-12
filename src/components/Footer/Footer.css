@@ -1,101 +1,104 @@
 .footer {
   background: var(--bg-secondary);
-  padding: 3rem 2rem 2rem;
-  position: relative;
   border-top: 1px solid var(--border-color);
+  padding: 2.5rem 2rem;
 }
 
-.footer-scroll-top {
-  position: absolute;
-  top: -25px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background: var(--color-blue);
-  border: 3px solid var(--bg-secondary);
-  color: white;
-  font-size: 1.25rem;
-  cursor: pointer;
+/* Content wrapper */
+.footer-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* ── Brand section ── */
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.footer-logo {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.3s ease;
-  z-index: 10;
+  border-radius: 14px;
 }
 
-.footer-scroll-top:hover {
-  transform: translateX(-50%) translateY(-5px);
-  box-shadow: 0 10px 30px rgba(37, 99, 235, 0.4);
+.footer-logo img {
+    height: 60px;
+    width: auto;
+  object-fit: contain;
+  margin-right: 40px;
 }
 
-.footer-content {
-  max-width: 1000px;
-  margin: 0 auto;
-  text-align: center;
+.footer-brand-info {
+  flex: 1;
 }
 
-.footer-nav {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem 2rem;
-  margin-bottom: 2rem;
+.footer-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.2rem;
 }
 
-.footer-nav-link {
-  background: none;
-  border: none;
+.footer-tagline {
+  font-size: 0.85rem;
   color: var(--text-muted);
-  font-size: 0.95rem;
-  font-weight: 500;
-  cursor: pointer;
-  padding: 0.5rem;
-  transition: all 0.3s ease;
 }
 
-.footer-nav-link:hover {
-  color: var(--color-blue);
-  transform: translateY(-2px);
+/* ── Divider ── */
+.footer-divider {
+  height: 1px;
+  background: var(--border-color);
+  margin: 1.5rem 0;
 }
 
+/* ── Social links ── */
 .footer-social {
   display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin-bottom: 2rem;
+  gap: 0.75rem;
 }
 
 .footer-social-link {
-  width: 45px;
-  height: 45px;
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.9rem;
   background: var(--bg-tertiary);
-  border: 2px solid var(--border-color);
-  border-radius: 12px;
-  color: var(--text-secondary);
-  font-size: 1.25rem;
+  border: 1px solid var(--border-color);
+  border-radius: 30px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-decoration: none;
   transition: all 0.3s ease;
 }
 
-.footer-social-link:hover {
-  background: var(--color-blue);
-  border-color: var(--color-blue);
-  color: white;
-  transform: translateY(-5px);
-}
+.footer-social-link.linkedin  { background: #0A66C2; color: white; border-color: #0A66C2; }
+.footer-social-link.linkedin:hover  { background: transparent; color: #0A66C2; border-color: rgba(10,102,194,0.3); transform: translateY(-3px); }
 
+.footer-social-link.instagram { background: #C13584; color: white; border-color: #C13584; }
+.footer-social-link.instagram:hover { background: transparent; color: #C13584; border-color: rgba(193,53,132,0.3); transform: translateY(-3px); }
+
+.footer-social-link.github    { background: #24292e; color: white; border-color: #24292e; }
+.footer-social-link.github:hover    { background: transparent; color: var(--text-primary); border-color: var(--border-color); transform: translateY(-3px); }
+
+/* ── Copyright ── */
 .footer-bottom {
-  padding-top: 2rem;
-  border-top: 1px solid var(--border-color);
+  text-align: center;
 }
 
 .footer-copyright {
   color: var(--text-muted);
-  font-size: 0.95rem;
+  font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
 }
 
 .heart-icon {
@@ -104,10 +107,14 @@
 }
 
 @keyframes heartbeat {
-  0%, 100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.2);
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.25); }
+}
+
+@media (max-width: 600px) {
+  .footer-brand {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
   }
 }

@@ -8,41 +8,13 @@ import {
   faUniversity,
   faBuilding,
 } from '@fortawesome/free-solid-svg-icons'
+import { useData } from '../../context/DataContext'
 import './Education.css'
-
-const education = [
-  {
-    institution: 'Pokhara University',
-    degree: "Bachelor's degree, Computer Software",
-    period: '2019 - 2024',
-    location: 'Pokhara, Nepal',
-    description: "Completed Bachelor's degree in Computer Software with focus on modern software development practices, algorithms, data structures, and software engineering principles.",
-    icon: faUniversity,
-    nodeColor: 'blue',
-  },
-  {
-    institution: 'Shree Rastriya Secondary School',
-    degree: 'Diploma in Computer Engineering, Computer Science',
-    period: '2016 - 2019',
-    location: 'Lalitpur, Nepal',
-    description: 'Completed Diploma in Computer Engineering with focus on computer science fundamentals and technical education.',
-    icon: faSchool,
-    nodeColor: 'green',
-  },
-  {
-    institution: 'Shree Rastriya Secondary School',
-    degree: 'Lower School',
-    period: '2006 - 2016',
-    location: 'Lalitpur, Nepal',
-    description: 'Completed lower school education with strong foundation in core subjects.',
-    icon: faSchool,
-    nodeColor: 'green',
-  },
-]
 
 function Education() {
   const [isVisible, setIsVisible] = useState(false)
   const sectionRef = useRef(null)
+  const { education } = useData()
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -63,22 +35,18 @@ function Education() {
     >
       <div className="education-container">
         <div className="education-header">
-          <span className="section-badge">
-            <FontAwesomeIcon icon={faGraduationCap} />
-            Education
-          </span>
           <h2 className="section-title">Academic Background</h2>
         </div>
         <div className="education-timeline">
           <div className="timeline-line"></div>
           {education.map((edu, index) => (
             <div
-              key={index}
+              key={edu.id || index}
               className="timeline-item"
               style={{ animationDelay: `${index * 0.15}s` }}
             >
-              <div className={`timeline-node node-${edu.nodeColor}`}>
-                <FontAwesomeIcon icon={edu.icon} />
+              <div className={`timeline-node node-${edu.nodeColor || 'blue'}`}>
+                <FontAwesomeIcon icon={edu.institution?.includes('University') ? faUniversity : faSchool} />
               </div>
               <div className="timeline-connector"></div>
               <div className="timeline-card">
@@ -109,3 +77,4 @@ function Education() {
 }
 
 export default Education
+

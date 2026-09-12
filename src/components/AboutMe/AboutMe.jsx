@@ -1,18 +1,19 @@
 import { useEffect, useRef, useState } from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUser, faQuoteLeft, faCode, faRocket } from '@fortawesome/free-solid-svg-icons'
+import { calculateDuration } from '../../utils/dateUtils'
+import { useData } from '../../context/DataContext'
 import './AboutMe.css'
 
 function AboutMe() {
   const [isVisible, setIsVisible] = useState(false)
   const sectionRef = useRef(null)
+  const { aboutMe } = useData()
+
+  const experienceText = calculateDuration(aboutMe.startDate || '2023-10-01')
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) setIsVisible(true)
-      },
-      { threshold: 0.2 }
+      ([entry]) => { if (entry.isIntersecting) setIsVisible(true) },
+      { threshold: 0.15 }
     )
     if (sectionRef.current) observer.observe(sectionRef.current)
     return () => observer.disconnect()
@@ -25,42 +26,37 @@ function AboutMe() {
       className={`about-me ${isVisible ? 'visible' : ''}`}
     >
       <div className="about-container">
-        <div className="about-header">
-          <span className="section-badge">
-            <FontAwesomeIcon icon={faUser} />
-            About Me
-          </span>
-          <h2 className="section-title">Who I Am</h2>
-        </div>
+        <h2 className="about-title">About Me</h2>
+
         <div className="about-content">
-          <div className="about-card">
-            <FontAwesomeIcon icon={faQuoteLeft} className="quote-icon" />
-            <p className="about-text">
-              I'm a passionate <strong>Software Engineer</strong> and{' '}
-              <strong>Dot Net Developer</strong> based in Nepal, dedicated to
-              building robust and scalable web applications. With nearly 2 years
-              of experience at Technables IT Solutions, I specialize in creating
-              elegant solutions to complex problems.
-            </p>
-            <p className="about-text">
-              My expertise spans across full-stack development, with a strong
-              focus on <strong>JavaScript</strong>, <strong>CSS</strong>, and{' '}
-              <strong>Web Development</strong>. I'm constantly learning and
-              evolving to stay at the forefront of technology.
-            </p>
+          <div className="about-bio">
+            {Array.isArray(aboutMe.bio) ? (
+              aboutMe.bio.map((paragraph, index) => <p key={index}>{paragraph}</p>)
+            ) : (
+              <p>{aboutMe.bio}</p>
+            )}
           </div>
-          <div className="about-features">
-            <div className="feature-item">
-              <div className="feature-icon">
-                <FontAwesomeIcon icon={faCode} />
-              </div>
-              <span>Clean & Maintainable Code</span>
+
+          <div className="about-aside">
+            <div className="about-detail">
+              <span className="about-detail-label">Role</span>
+              <span className="about-detail-value">{aboutMe.role}</span>
             </div>
-            <div className="feature-item">
-              <div className="feature-icon">
-                <FontAwesomeIcon icon={faRocket} />
-              </div>
-              <span>Performance Focused</span>
+            <div className="about-detail">
+              <span className="about-detail-label">Company</span>
+              <span className="about-detail-value">{aboutMe.company}</span>
+            </div>
+            <div className="about-detail">
+              <span className="about-detail-label">Experience</span>
+              <span className="about-detail-value">{experienceText}</span>
+            </div>
+            <div className="about-detail">
+              <span className="about-detail-label">Location</span>
+              <span className="about-detail-value">{aboutMe.location}</span>
+            </div>
+            <div className="about-detail">
+              <span className="about-detail-label">Stack</span>
+              <span className="about-detail-value">{aboutMe.stack}</span>
             </div>
           </div>
         </div>
@@ -70,3 +66,5 @@ function AboutMe() {
 }
 
 export default AboutMe
+
+

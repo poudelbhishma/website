@@ -53,12 +53,6 @@ function ContactMe() {
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    const mailto = `mailto:bhishmapoudel408@gmail.com?subject=Contact from ${formData.name}&body=${encodeURIComponent(formData.message)}`
-    window.location.href = mailto
-  }
-
   return (
     <section
       id="contact"
@@ -67,10 +61,7 @@ function ContactMe() {
     >
       <div className="contact-container">
         <div className="contact-header">
-          <span className="section-badge">
-            <FontAwesomeIcon icon={faPaperPlane} />
-            Contact Me
-          </span>
+          
           <h2 className="section-title">Get In Touch</h2>
           <p className="contact-subtitle">
             Have a project in mind? Let's connect and build something amazing together.
@@ -112,7 +103,11 @@ function ContactMe() {
               )
             })}
           </div>
-          <form className="contact-form" onSubmit={handleSubmit}>
+          <form
+            className="contact-form"
+            action="https://formsubmit.co/bhishmapoudel408@gmail.com"
+            method="POST"
+          >
             <div className="form-group">
               <input
                 type="text"
